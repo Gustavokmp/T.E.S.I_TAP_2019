@@ -1,0 +1,16 @@
+{
+    "name": "exemplo-nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon ./src/main.js"
+    },
+    "author": "Gustavo Pires",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "ejs": "^2.6.1",
+        "express": "^4.16.4"
+    }
+}
