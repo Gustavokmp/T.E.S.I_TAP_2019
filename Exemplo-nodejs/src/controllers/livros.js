@@ -1,24 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const livrosRepo = require('../repositories/LivrosRepository');
+const seguranca = require('../util/seguranca');
 
-router.get('/livros', (req, res) => {
+router.get('/', (req, res) => {
     res.json(livrosRepo.todos());
 });
 
-router.get('/livros/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     res.json(livrosRepo.recuperar(parseInt(req.params.id)));
 });
 
-router.post('/livros', (req, res) => {
+router.post('/', seguranca.autorizaJWTUser, (req, res) => {
     res.json(livrosRepo.adicionar(req.body))
 });
 
-router.put('/livros/:id', (req, res) => {
+router.put('/:id', seguranca.autorizaJWTUser, (req, res) => {
     res.json(livrosRepo.alterar(parseInt((req.params.id), req.body)));
 });
 
-router.delete('/livros/:id', (req, res) => {
+router.delete('/:id', seguranca.autorizaJWT, (req, res) => {
     livrosRepo.remover(parseInt(req.params.id));
     res.sendStatus(200);
 });
