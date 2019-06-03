@@ -6,6 +6,7 @@ import { DocumentListComponent } from './document-list/document-list.component';
 import { DocumentComponent } from './document/document.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
@@ -18,6 +19,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [],

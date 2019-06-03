@@ -5,7 +5,7 @@ const tabela = 'usuario';
 module.exports = {
 
     adicionarUsuario:function (usuario) {
-        service.insertOne(tabela,usuario);
+        return service.insertOne(tabela,usuario);
     },
 
     buscarUsuario:function(usuario){

@@ -1,4 +1,4 @@
-<div *ngIf="isLogin">
+<div *ngIf="isLogin()">
    
     <div>
             <app-document-list></app-document-list>
@@ -10,7 +10,7 @@
     
     
 </div>
-<div *ngIf="!isLogin">
+<div *ngIf="!isLogin()">
         <div class="container-fluid">
                 <div class="container">
                     <h2 class="text-center" id="title">Bate papo</h2>

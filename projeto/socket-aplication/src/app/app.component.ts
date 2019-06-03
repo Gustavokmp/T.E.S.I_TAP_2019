@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from './services/usuario.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent {
   title = 'socket-app';
-  isLogin = false;
   username: string  = '';
   password: string  = '';
   registro = {
@@ -18,16 +19,31 @@ export class AppComponent {
     email:''
   }
 
+  constructor(private usuarioService:UsuarioService){};
+
   login(){
-    console.log(this.username, this.password);
-    this.isLogin = true;
-    
+    console.log('AQUIII')
+    this.usuarioService.login(this.username,this.password).subscribe(data =>{
+      localStorage.setItem('token',data.token);
+    });  
   }
   registrar(){
     console.log(this.registro);
+    this.usuarioService.registrar(this.registro).subscribe(
+      data  => {
+      console.log("POST Request is successful ", data);
+      },
+      error  => {
+      
+      console.log("Error", error);
+      
+      });
   }
   sair(){
-    this.isLogin = false;
+    localStorage.removeItem('token');
+  }
+  isLogin(){
+    return localStorage.getItem('token') != null;
   }
 
 }

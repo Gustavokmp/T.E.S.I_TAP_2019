@@ -3,12 +3,9 @@ const router = express.Router();
 const usuarioRepository = require('../database/service-usuario');
 
 router.post('/',(req, res) => {
-    let aux = {
-        _id:'',
-        teste:req.body.teste
-    }
-    console.log(aux);
-    usuarioRepository.adicionarUsuario(aux)
+    console.log('CHEGOUUU')
+    console.log(req.body);
+    usuarioRepository.adicionarUsuario(req.body)
     res.sendStatus(201);
 });
 
